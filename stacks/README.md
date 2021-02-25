@@ -3,3 +3,4 @@ For compiling a file (say ```xyz.c```) using the stack implementation, do the fo
 ```c
 gcc xyz.c stack-implementation.c -o xyz
 ```
+or any other name that you wish for being the name of the executable.
