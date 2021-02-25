@@ -5,4 +5,5 @@ The implementation (the ones with a ```-impl```) files can be compiled with anot
 ```c
 gcc xyz.c queue-??-impl.c -o xyz 
 ```
-The name of the executable can be changed according to your will, along with any of the relevant implementations.
+The name of the executable can be changed according to your will, along with any of the relevant implementations.\
+It must be noted here that the only difference in the implementation is the method of checking for empty/full queues.
