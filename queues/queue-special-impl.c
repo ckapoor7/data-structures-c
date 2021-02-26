@@ -3,19 +3,19 @@
 #include <stdlib.h>
 #include "queue-special.h"
 
-void add(int item, struct queue* queue_ptr){
+void enqueue(int item, struct queue* queue_ptr){
   if(full(queue_ptr)){
     printf("Queue is full\n");
     exit(1);
   }
   else{
-    queue_ptr->tail = (queue_ptr->tail+1)%(queue_ptr->max_size); //ciruclar queue
+    queue_ptr->tail = (queue_ptr->tail+1)%(queue_ptr->max_size); //circular queue
     queue_ptr->arr[queue_ptr->tail] = item;
-    printf("Element added:%d\n",item); //Debug print statement*/
+    /*printf("Element added:%d\n",item); //Debug print statement*/
   }
 }
 
-int delete(struct queue* queue_ptr){
+int dequeue(struct queue* queue_ptr){
   if (empty(queue_ptr)){
     printf("Empty queue\n");
     exit(1);
@@ -23,13 +23,10 @@ int delete(struct queue* queue_ptr){
   }
   else{
     int elem = queue_ptr->arr[queue_ptr->head];
-    if (queue_ptr->head != queue_ptr->tail) //Non-empty queue
+    if (queue_ptr->head == queue_ptr->tail)
+      queue_ptr->head = queue_ptr->tail = -1;
+    else
       queue_ptr->head = (queue_ptr->head+1)%(queue_ptr->max_size);
-    else{//Re-initialize indices of the head and tail
-      queue_ptr->head = 0;
-      queue_ptr->tail = -1;
-    }
-    printf("Deleted element: %d\n",elem); //Debug print statement
     return elem;
   }
 }
@@ -44,12 +41,12 @@ struct queue* init(int max_size){
 }
 
 bool full(struct queue* queue_ptr){
-  return ((queue_ptr->tail == queue_ptr->head-1 && queue_ptr->tail>-1)||
-	  (queue_ptr->tail = queue_ptr->max_size-1 && queue_ptr->head == 0));
+  return ((queue_ptr->tail == queue_ptr->max_size-1)||
+	  (queue_ptr->head == 0 && queue_ptr->tail == queue_ptr->max_size-1));
 }
 
 bool empty(struct queue* queue_ptr){
-  return queue_ptr->tail<=-1;
+  return queue_ptr->head==-1;
 }
 
 void print(struct queue* queue_ptr){
@@ -57,3 +54,5 @@ void print(struct queue* queue_ptr){
     printf("%d ",queue_ptr->arr[queue_ptr->head++]);
   printf("\n");
 }
+
+
