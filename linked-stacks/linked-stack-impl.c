@@ -53,7 +53,7 @@ bool empty(struct stack_tag* stack_ptr){
 
 void push(int data, struct stack_tag* stack_ptr){
   push_node(make_node(data), stack_ptr);
-  printf("Pushed %d\n", data);
+  //printf("Pushed %d\n", data);
 }
 
 
@@ -62,9 +62,10 @@ int pop(struct stack_tag* stack_ptr){
   pop_node(&n, stack_ptr); //pop the node
   int res = n->info;
   free(n); //all done with the concerned node
-  printf("Popped %d\n", res);
+  //printf("Popped %d\n", res);
   return res;
 }
+
 
 int main(){
   struct stack_tag *my_stack = init(my_stack);
