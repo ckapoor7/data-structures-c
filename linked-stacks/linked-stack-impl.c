@@ -16,6 +16,7 @@ void push_node(struct node *node_ptr, struct stack_tag *stack_ptr){
   else{
     node_ptr->next = stack_ptr->top;
     stack_ptr->top = node_ptr;
+    node_ptr->next = NULL;
   }
 }
 
@@ -69,5 +70,7 @@ int pop(struct stack_tag* stack_ptr){
 
 int main(){
   struct stack_tag *my_stack = init(my_stack);
+  push(11, my_stack);
+  pop(my_stack);
   return 0;
 }
