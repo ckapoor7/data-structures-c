@@ -67,10 +67,3 @@ int pop(struct stack_tag* stack_ptr){
   return res;
 }
 
-
-int main(){
-  struct stack_tag *my_stack = init(my_stack);
-  push(11, my_stack);
-  pop(my_stack);
-  return 0;
-}
