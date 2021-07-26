@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 
+
 struct stack_tag *init(struct stack_tag *stack_ptr){
   stack_ptr->top = NULL; //initialize the top of the stack to be empty
   return stack_ptr;
