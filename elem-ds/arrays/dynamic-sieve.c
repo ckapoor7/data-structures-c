@@ -1,20 +1,23 @@
 /*
- * A simple program that uses arrays to
- * implement the "Sieve of Eratosthenes" algorithm.
- * The idea is simple: I initialize all array elements a[i]
- * to 1 if 'i' is prime and 0 if it is non-prime. Initially,
- * all elements are set to 1.
- * Note that the runtime efficiency of this algorithm is O(n),
- * as opposed to standard loops which yields O(n^(3/2)).
+ * An implentation of the Sieve of Eratosthenes (again:P),
+ * but this time using dynamic memeory allocation (ie-command line
+ * arguments)
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-#define N 10000
+int main(int argc, char *argv[]){
+    int i, j, N = atoi(argv[1]);
+    int *a = malloc(N*sizeof(int));
 
-int main(){
-    int i, j, a[N];
+    // Check for null pointer
+    if (a == NULL){
+        printf("Insufficient memory\n");
+        return 0;
+    }
 
+    // Standard algorithm follows
     for (i = 2; i < N; i++){ // Set all indices to be 1
         a[i] = 1;
     }
@@ -30,4 +33,5 @@ int main(){
     printf("\n");
 
     return 0;
+
 }
