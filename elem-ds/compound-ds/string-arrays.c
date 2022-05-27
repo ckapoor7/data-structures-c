@@ -32,7 +32,6 @@ int main(){
     }
 
     qsort(a, N, sizeof(char*), compare); // quick sort using 'compare' as the base function
-
     for (i = 0; i < N; i++)
         printf("%s\n", a[i]);
 
